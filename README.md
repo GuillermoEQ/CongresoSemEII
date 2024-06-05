@@ -1,6 +1,6 @@
 # CongresoSemEII 🎸
 
-##[SERVER](https://github.com/GuillermoEQ/CongresoSemEII/edit/main/server)
+## [SERVER](https://github.com/GuillermoEQ/CongresoSemEII/edit/main/server)
 
 Navegar a la carpeta server  ``` cd sserver ```
 Ejecutar ` docker-compose buil ` para onstruir el contenedor.

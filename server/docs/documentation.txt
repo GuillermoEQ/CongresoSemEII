@@ -1,0 +1,19 @@
+DOCUMENTACIÓN OFICIAL sequelize
+https://sequelize.org/docs/
+
+TABLAS
+https://www.dbdiagram.io/d/Congreso-App-665f9e42b65d93387983dfac
+
+REALIZAR TEST CON INSOMNIA
+
+* Abrir insomnia y crear una Request Collection
+* Luego crear una HTTP Request
+* En parametros cambiar body por json
+* Ingresar la ruta http://localhost:3000/api/v1/
+* Ya puedes probar la api, recuerda ingresar la ruta a probar como activities, el método HTTP y el JSON si es necesario
+
+
+
+
+DOCKER
+https://medium.com/@miriamnavamucino/conectar-docker-y-postgres-con-node-js-cbaea3934835

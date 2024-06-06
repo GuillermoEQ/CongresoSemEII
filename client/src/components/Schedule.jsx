@@ -46,7 +46,7 @@ export default function Calendar() {
     return (
         <View style={styles.calendar}>
             <View>
-                <Text style={styles.title}>MARTES</Text>
+                <Text style={styles.title}>Cronograma</Text>
             </View>
             <Text style={styles.taskTitle}>Todas las actividades</Text>
             <ScrollView style={styles.tasks}>
@@ -69,16 +69,21 @@ const styles = StyleSheet.create({
     calendar: {
         width: fullWidth,
         height: fullHeight,
-        backgroundColor: '#e9e1d2'
+        backgroundColor: '#cec1cf'
     },
     title: {
-        fontSize: 55,
-        marginBottom: 280,
-        padding: 15
+        fontSize: 45,
+        marginBottom: 130,
+        marginTop: 50,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white'
+
     },
     tasks: {
         width: fullWidth,
-        height: fullHeight,
+        height: "300rem",
         backgroundColor: '#f4f4f4',
         paddingTop: 5
     },

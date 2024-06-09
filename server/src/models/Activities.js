@@ -8,7 +8,7 @@ const Activitie = sequelize.define('Activities', {
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     content: {
@@ -16,7 +16,7 @@ const Activitie = sequelize.define('Activities', {
       allowNull: false
     },
     lecturer: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     start: {

@@ -14,18 +14,16 @@ const port  = process.env.PORT || 3000;
 const version = "v1"
 
 const app = express();
-
 const corsOptions = {
-  origin: 'http://localhost:8081', // Permite solicitudes solo desde este origen
-  methods: 'GET,POST,PUT,DELETE', // Permitir solo métodos GET y POST
-  allowedHeaders: 'Content-Type' // Permitir solo cabeceras específicas
+  origin: 'http://localhost:8081',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type'
 };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ROUTE MAIN
 app.get('/', async (req, res) => {
   res.status(200).json({
     message: 'Congreso App'

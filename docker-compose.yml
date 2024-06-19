@@ -4,21 +4,20 @@ services:
   db:
     image: postgres:13
     environment:
-      POSTGRES_DB: congreso
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
       - "5432:5432"
 
   backend:
     build: ./server
+    environment:
+      - PORT=${PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_HOST=${DB_HOST}
     ports:
       - "3000:3000"
-    environment:
-      - PORT=3000
-      - DB_NAME=congreso
-      - DB_USER=postgres
-      - DB_PASS=admin
-      - DB_HOST=db
-    depends_on:
-      - db
+    

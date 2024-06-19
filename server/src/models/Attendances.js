@@ -3,7 +3,7 @@ const sequelize = require('../config/db.config');
 const Activitie = require('./Activities');
 const Student = require('./Students');
 
-const antendance = sequelize.define('Attendances', {
+const Attendance = sequelize.define('Attendances', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -48,4 +48,4 @@ Activitie.hasMany(Attendance, { foreignKey: 'activityId' });
 Attendance.belongsTo(Student, { foreignKey: 'studentId' });
 Student.hasMany(Attendance, { foreignKey: 'studentId' });
 
-module.exports = Attendances;
+module.exports = Attendance;

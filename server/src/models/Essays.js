@@ -36,4 +36,4 @@ const Essay = sequelize.define('Essays', {
 Essay.belongsTo(student, { foreignKey: 'studentId' });
 student.hasOne(Essay, { foreignKey: 'studentId' });
 
-module.exports = Essays;
+module.exports = Essay;

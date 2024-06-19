@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet , Image} from 'react-native';
 
 export default function Task({ key, title, content, start, end, color }) {  
   return (
@@ -7,7 +7,15 @@ export default function Task({ key, title, content, start, end, color }) {
       <Text style={styles.title}>{title}</Text>
       <View style={styles.detailsContainer}>
         <Text style={styles.detail}>{start} PM</Text>
-        <Text style={[styles.detail,styles.duration, { color: color }]}>30 Min</Text>
+        <View style={styles.duration}>
+          <Text style={[styles.detail]}>30</Text>
+          <Image
+            source={require("../../assets/icons/reloj.svg")}
+            style={styles.detail}
+          />
+        </View>
+        
+        
         <Text style={styles.detail}>{end} PM</Text>
       </View>
     </View>
@@ -25,9 +33,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     width: 350,
-    fontWeight: 'bold',
     height: 130,
-    color: '#00000085',
+    color: '#000000b6',
+    paddingVertical: 7
   },
   detailsContainer: {
     flexDirection: 'row', // Alinear los elementos horizontalmente
@@ -37,13 +45,15 @@ const styles = StyleSheet.create({
   detail: {
     fontSize: 22,
     fontWeight: 500,
-    color: '#00000085',
-    padding: 8,
+    color: '#ffffff',
   },
   duration: {
-    backgroundColor: '#3c3b3bab',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    color: 'white',
+    backgroundColor: '#131313ab',
+    paddingVertical: 6,
+    paddingHorizontal: 25,
     borderRadius: 20,
 
   }

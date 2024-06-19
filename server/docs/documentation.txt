@@ -17,3 +17,13 @@ REALIZAR TEST CON INSOMNIA
 
 DOCKER
 https://medium.com/@miriamnavamucino/conectar-docker-y-postgres-con-node-js-cbaea3934835
+
+Añadir al git
+git checkout -b modelo_asistencia
+git pull origin develop
+
+git add .
+git commit -m "Agregé la tabla asistencia"
+git push origin modelo_asistencia
+
+# despues subirlo x github

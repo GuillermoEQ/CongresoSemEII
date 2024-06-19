@@ -2,16 +2,16 @@ const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const activitieRoutes = require('./routes/activitiesRoutes');
+const studentRoutes = require('./routes/studentsRoutes');
+const attendancesRoutes = require('./routes/attendancesRoutes');
+const essaysRoutes = require('./routes/essaysRoutes');
 
-const sequelize = require('./config/db.config.js');
-const { Sequelize } = require('sequelize');
+const sequelize = require('./config/db.config');
 require('dotenv').config();
 
-// ROUTES IMPORT 
-const activitieRoutes = require('./routes/activitiesRoutes');
-
-const PORT = process.env.PORT || 3000;
-const version = "v1";
+const port  = process.env.PORT || 3000;
+const version = "v1"
 
 const app = express();
 const corsOptions = {
@@ -30,18 +30,27 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.use(`/api/${version}/activities`, activitieRoutes);
+// ALL ROUTES
+app.use(`/api/${version}/activities`, activitieRoutes); // activities routes
+app.use(`/api/${version}/students`, studentRoutes); // activities routes
+app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes
+app.use(`/api/${version}/essays`, essaysRoutes); // essays routes
 
-// Sync database and run migrations automatically
-sequelize.sync()
-  .then(() => {
-    console.log('Database synchronized successfully.');
-    const server = http.createServer(app);
-    server.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to sync database:', err);
-    process.exit(1);
-  });
+
+// SERVER 
+const server = http.createServer(app);
+
+server.listen(port, async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    await sequelize.sync(); // Sincroniza el modelo con la base de datos
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+
+

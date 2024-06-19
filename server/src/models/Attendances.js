@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const Activitie = require('./Activities');
-const Student = require('./Students');
+const Students = require('./Students');
 
 const Attendance = sequelize.define('Attendances', {
     id: {
@@ -45,7 +45,7 @@ Attendance.belongsTo(Activitie, { foreignKey: 'activityId' });
 Activitie.hasMany(Attendance, { foreignKey: 'activityId' });
 
 // (un estudiante puede tener muchas asist)
-Attendance.belongsTo(Student, { foreignKey: 'studentId' });
-Student.hasMany(Attendance, { foreignKey: 'studentId' });
+Attendance.belongsTo(Students, { foreignKey: 'studentId' });
+Students.hasMany(Attendance, { foreignKey: 'studentId' });
 
 module.exports = Attendance;

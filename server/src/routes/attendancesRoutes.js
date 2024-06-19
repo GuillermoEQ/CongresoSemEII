@@ -3,7 +3,7 @@ const attendanceController = require('../controllers/attendancesController'); //
 const router = express.Router(); // rutas
 
 // creamos las rutas CRUD
-router.get('/', attendanceController.getAllAttendance);
+router.get('/', attendanceController.getAllAttendances);
 router.get('/:id', attendanceController.getAttendanceById);
 router.post('/', attendanceController.createAttendance);
 router.put('/:id', attendanceController.updatedAttendance);

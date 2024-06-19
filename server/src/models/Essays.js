@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
+const Students = require('./Students');
 
 const Essay = sequelize.define('Essays', {
     id: {
@@ -33,7 +34,7 @@ const Essay = sequelize.define('Essays', {
 });
 
 // La relación como claves foraneas de Essays
-Essay.belongsTo(student, { foreignKey: 'studentId' });
-student.hasOne(Essay, { foreignKey: 'studentId' });
+Essay.belongsTo(Students, { foreignKey: 'studentId' });
+Students.hasOne(Essay, { foreignKey: 'studentId' });
 
 module.exports = Essay;

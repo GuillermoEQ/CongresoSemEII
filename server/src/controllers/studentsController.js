@@ -1,6 +1,8 @@
+//SERA MODIFICADO EL ARCHIVO
+
 const Student = require('../models/Students');
 
-// GET ALL ACTIVITIES
+// GET ALL STUDENT
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await Student.findAll();
@@ -10,7 +12,7 @@ exports.getAllStudents = async (req, res) => {
   }
 };
 
-// GET ACTIVITIE BY ID
+// GET STUDENT BY ID
 exports.getStudentById = async (req, res) => {
   try {
     const student = await Student.findByPk(req.params.id);
@@ -24,7 +26,7 @@ exports.getStudentById = async (req, res) => {
   }
 };
 
-// CREATE ACTIVITIE
+// CREATE STUDENT
 exports.createStudent = async (req, res) => {
   try {
     const student = await Student.create(req.body);
@@ -34,7 +36,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
-// UPDATE ACTIVITIE
+// UPDATE STUDENT
 exports.updatedStudent = async (req, res) => {
   try {
     const [updated] = await Student.update(req.body, {
@@ -51,7 +53,7 @@ exports.updatedStudent = async (req, res) => {
   }
 };
 
-// DELETE ACTIVITIE
+// DELETE STUDENT
 exports.deleteStudent = async (req, res) => {
   try {
     const deleted = await Student.destroy({

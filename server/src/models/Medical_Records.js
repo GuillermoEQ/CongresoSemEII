@@ -36,7 +36,7 @@ const Medical_Record = sequelize.define('Medical_Records', {
       allowNull: false
     }
   }, {
-    tableName: 'medical_record', // nombre de la tabla de postgreSQL
+    tableName: 'medical_record', 
     timestamps: false
 });
 

@@ -2,10 +2,13 @@ const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
+const usersRoutes = require('./routes/usersRoutes');
 const activitieRoutes = require('./routes/activitiesRoutes');
 const studentRoutes = require('./routes/studentsRoutes');
 const attendancesRoutes = require('./routes/attendancesRoutes');
 const essaysRoutes = require('./routes/essaysRoutes');
+
 
 const sequelize = require('./config/db.config');
 require('dotenv').config();
@@ -31,10 +34,12 @@ app.get('/', async (req, res) => {
 });
 
 // ALL ROUTES
+app.use(`api/${version}/users`, usersRoutes); // user routes
 app.use(`/api/${version}/activities`, activitieRoutes); // activities routes
 app.use(`/api/${version}/students`, studentRoutes); // activities routes
 app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes
 app.use(`/api/${version}/essays`, essaysRoutes); // essays routes
+
 
 
 // SERVER 

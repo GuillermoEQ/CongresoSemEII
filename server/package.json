@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
-
+    "dev": "nodemon src/app.js",
+    "test": "mocha src/test/**/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -26,8 +27,13 @@
     "sequelize": "^6.37.3"
   },
   "dependencies": {
+    "chai": "^5.1.1",
     "dotenv": "^16.4.5",
+    "mocha": "^10.4.0",
     "nodemon": "^3.1.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "sequelize-mock": "^0.10.2",
+    "sinon": "^18.0.0",
+    "supertest": "^7.0.0"
   }
 }

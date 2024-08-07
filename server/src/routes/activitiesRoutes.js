@@ -1,12 +1,20 @@
 const express = require('express');
-const activitieController = require('../controllers/activitiesController'); // importamos los controllers
-const router = express.Router(); // rutas
+const router = express.Router();
+const activitiesController = require('../controllers/activities.controller');
 
-// creamos las rutas CRUD
-router.get('/', activitieController.getAllActivities);
-router.get('/:id', activitieController.getActivitieById);
-router.post('/', activitieController.createActivitie);
-router.put('/:id', activitieController.updatedActivitie);
-router.delete('/:id', activitieController.deleteActivitie);
+// Crear una nueva actividad
+router.post('/', activitiesController.create);
+
+// Obtener todas las actividades
+router.get('/', activitiesController.findAll);
+
+// Obtener una actividad por ID
+router.get('/:id', activitiesController.findOne);
+
+// Actualizar una actividad por ID
+router.put('/:id', activitiesController.update);
+
+// Eliminar una actividad por ID
+router.delete('/:id', activitiesController.delete);
 
 module.exports = router;

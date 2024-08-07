@@ -1,68 +1,86 @@
-const Activitie = require('../models/Activities');
+const Activitie = require('../models/activities.model');
 
-// GET ALL ACTIVITIES
-exports.getAllActivities = async (req, res) => {
+// Crear y guardar una nueva actividad
+exports.create = async (req, res) => {
+  try {
+    const activity = await Activitie.create(req.body);
+    res.status(201).send(activity);
+  } catch (error) {
+    res.status(500).send({
+      message: error.message || 'Some error occurred while creating the Activity.'
+    });
+  }
+};
+
+// Obtener todas las actividades
+exports.findAll = async (req, res) => {
   try {
     const activities = await Activitie.findAll();
-    res.status(200).json(activities);
+    res.status(200).send(activities);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).send({
+      message: error.message || 'Some error occurred while retrieving activities.'
+    });
   }
 };
 
-// GET ACTIVITIE BY ID
-exports.getActivitieById = async (req, res) => {
+// Obtener una actividad por ID
+exports.findOne = async (req, res) => {
   try {
-    const activitie = await Activitie.findByPk(req.params.id);
-    if (activitie) {
-      res.status(200).json(activitie);
+    const activity = await Activitie.findByPk(req.params.id);
+    if (activity) {
+      res.status(200).send(activity);
     } else {
-      res.status(404).json({ error: 'Activitie not found' });
+      res.status(404).send({
+        message: `Cannot find Activity with id=${req.params.id}.`
+      });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).send({
+      message: `Error retrieving Activity with id=${req.params.id}`
+    });
   }
 };
 
-// CREATE ACTIVITIE
-exports.createActivitie = async (req, res) => {
-  try {
-    const activitie = await Activitie.create(req.body);
-    res.status(201).json(activitie);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-// UPDATE ACTIVITIE
-exports.updatedActivitie = async (req, res) => {
+// Actualizar una actividad por ID
+exports.update = async (req, res) => {
   try {
     const [updated] = await Activitie.update(req.body, {
       where: { id: req.params.id }
     });
     if (updated) {
-      const updatedActivitie = await Activitie.findByPk(req.params.id);
-      res.status(200).json(updatedActivitie);
+      const updatedActivity = await Activitie.findByPk(req.params.id);
+      res.status(200).send(updatedActivity);
     } else {
-      res.status(404).json({ error: 'Activitie not found' });
+      res.status(404).send({
+        message: `Cannot update Activity with id=${req.params.id}. Maybe Activity was not found or req.body is empty!`
+      });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).send({
+      message: `Error updating Activity with id=${req.params.id}`
+    });
   }
 };
 
-// DELETE ACTIVITIE
-exports.deleteActivitie = async (req, res) => {
+// Eliminar una actividad por ID
+exports.delete = async (req, res) => {
   try {
     const deleted = await Activitie.destroy({
       where: { id: req.params.id }
     });
     if (deleted) {
-      res.status(204).json();
+      res.status(200).send({
+        message: 'Activity was deleted successfully!'
+      });
     } else {
-      res.status(404).json({ error: 'Activitie not found' });
+      res.status(404).send({
+        message: `Cannot delete Activity with id=${req.params.id}. Maybe Activity was not found!`
+      });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).send({
+      message: `Could not delete Activity with id=${req.params.id}`
+    });
   }
 };

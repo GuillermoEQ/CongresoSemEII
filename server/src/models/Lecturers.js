@@ -1,63 +1,50 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db.config');
+const sequelize = require('../config/database');
+const User = require('./Users');
 
 const Lecturer = sequelize.define('Lecturers', {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
-    name: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    surname: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    tel: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    institution: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    position_held: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    biography: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    theme: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    summary_presentation: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    state: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    social_media: {
-      type: DataTypes.STRING,
-      allowNull: true
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  user_id: {
+    type: DataTypes.UUID,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id'
     }
-  }, {
-    tableName: 'lecturers', // nombre de la tabla de postgreSQL
-    timestamps: false
+  },
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  institution: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  position: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  biography: {
+    type: DataTypes.TEXT
+  },
+  photo: {
+    type: DataTypes.STRING
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+  tableName: 'lecturers',
+  timestamps: true  // Esto agrega las columnas createdAt y updatedAt
 });
+
+// Definir la relación
+Lecturer.belongsTo(User, { foreignKey: 'user_id' });
+User.hasMany(Lecturer, { foreignKey: 'user_id' });
 
 module.exports = Lecturer;

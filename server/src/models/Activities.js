@@ -15,8 +15,12 @@ const Activitie = sequelize.define('Activities', {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lecturer: {
-      type: DataTypes.STRING(255),
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    activitiy_type: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     start: {
@@ -27,7 +31,7 @@ const Activitie = sequelize.define('Activities', {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    day: {
+    quota: {
       type: DataTypes.DECIMAL,
       allowNull: false
     }

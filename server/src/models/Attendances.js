@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const Activitie = require('./Activities');
-const Students = require('./Students');
+const Register = require('./Registers');
 
 const Attendance = sequelize.define('Attendances', {
     id: {
@@ -9,43 +9,34 @@ const Attendance = sequelize.define('Attendances', {
         autoIncrement: true,
         primaryKey: true
     },
+    mark_attendance: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
     // CLAVES FORANEAS [
-    activityId: {
+
+    register_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: Activitie,
+            model: Register,
             key: 'id'
         }
-    },
-    studentId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: Students,
-            key: 'id'
-        }
-    },
-    // ]
-    date: {
-        type: DataTypes.DECIMAL,
-        allowNull: false
-    },
-    status: {
-        type: DataTypes.STRING(255),
-        allowNull: false
     }
+    // ]
     }, {
     tableName: 'attendances', // nombre de la tabla de postgreSQL
-    timestamps: false
+    timestamps: True
 });
 
 // La relación como claves foraneas de atendances
 
 // (una act puede tener muchas asist)
-Attendance.belongsTo(Activitie, { foreignKey: 'activityId' });
-Activitie.hasMany(Attendance, { foreignKey: 'activityId' });
+Attendance.belongsTo(Activitie, { foreignKey: 'activity_id' });
+Activitie.hasMany(Attendance, { foreignKey: 'activity_id' });
 
-// (un estudiante puede tener muchas asist)
-Attendance.belongsTo(Students, { foreignKey: 'studentId' });
-Students.hasMany(Attendance, { foreignKey: 'studentId' });
+// (un registro puede tener muchas asist)
+Attendance.belongsTo(Register, { foreignKey: 'register_id' });
+Register.hasMany(Attendance, { foreignKey: 'register_id' });
 
 module.exports = Attendance;

@@ -9,7 +9,7 @@ const Essay = sequelize.define('Essays', {
         primaryKey: true
     },
     // CLAVE FORANEA
-    studentId: {
+    student_id: {
         type: DataTypes.INTEGER,
         references: {
             model: Students,
@@ -27,6 +27,14 @@ const Essay = sequelize.define('Essays', {
     status: {
         type: DataTypes.STRING(255),
         allowNull: false
+    },
+    summary_date: {
+        type: DataTypes.DECIMAL,
+        allowNull: false
+    },
+    complete_date: {
+        type: DataTypes.DECIMAL,
+        allowNull: false
     }
     }, {
     tableName: 'essays', // nombre de la tabla de postgreSQL
@@ -34,7 +42,7 @@ const Essay = sequelize.define('Essays', {
 });
 
 // La relación como claves foraneas de Essays
-Essay.belongsTo(Students, { foreignKey: 'studentId' });
-Students.hasOne(Essay, { foreignKey: 'studentId' });
+Essay.belongsTo(Students, { foreignKey: 'student_id' });
+Students.hasOne(Essay, { foreignKey: 'student_id' });
 
 module.exports = Essay;

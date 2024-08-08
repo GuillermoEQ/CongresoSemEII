@@ -1,10 +1,8 @@
-//SERA MODIFICADO EL ARCHIVO
-
 const express = require('express');
 const studentController = require('../controllers/studentsController');
 const router = express.Router();
 
-// CRUD routes for Students
+//Rutas CRUD
 router.get('/', studentController.getAllStudents);
 router.get('/:id', studentController.getStudentById);
 router.post('/', studentController.createStudent);

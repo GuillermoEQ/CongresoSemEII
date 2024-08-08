@@ -36,12 +36,6 @@ const Accommodation = sequelize.define('Accommodation', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  // CLAVES FORANEAS
-    //Modificar user_id
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
   type_accommodation_id: {
     type: DataTypes.INTEGER,
     references: {

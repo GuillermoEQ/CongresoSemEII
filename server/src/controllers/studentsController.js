@@ -1,8 +1,6 @@
-//SERA MODIFICADO EL ARCHIVO
-
 const Student = require('../models/Students');
 
-// GET ALL STUDENT
+// GET ALL STUDENTS
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await Student.findAll();
@@ -37,7 +35,7 @@ exports.createStudent = async (req, res) => {
 };
 
 // UPDATE STUDENT
-exports.updatedStudent = async (req, res) => {
+exports.updateStudent = async (req, res) => {
   try {
     const [updated] = await Student.update(req.body, {
       where: { id: req.params.id }

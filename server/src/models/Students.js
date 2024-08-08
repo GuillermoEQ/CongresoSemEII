@@ -33,7 +33,4 @@ const Student = sequelize.define('Student', {
   timestamps: false
 });
 
-Student.belongsTo(User, {foreignKey: 'user_id'});
-User.hasOne(Student, { foreignKey: 'userId' });
-
 module.exports = Student;

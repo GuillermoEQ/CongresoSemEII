@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const Accommodation = require('./Accommodations');
+const User = require('./Users');
 
 const Booking = sequelize.define('Booking', {
   id: {
@@ -8,7 +9,15 @@ const Booking = sequelize.define('Booking', {
     autoIncrement: true,
     primaryKey: true
   },
-  // CLAVES FORANEAS [
+  // CLAVE FORANEA
+  user_id: {
+    type: DataTypes.INTEGER,
+    references:{
+      model: User,
+      key: 'id'
+    },
+    allowNull: false
+  },
   accommodation_id: {
     type: DataTypes.INTEGER,
     references: {
@@ -17,11 +26,6 @@ const Booking = sequelize.define('Booking', {
     },
     allowNull: false
   },
-    //Modificar user_id
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  }, // ]
   start_day: {
     type: DataTypes.DATE,
     allowNull: false

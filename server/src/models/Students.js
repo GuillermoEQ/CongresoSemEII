@@ -1,6 +1,6 @@
-// Student model
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
+const User = require('./Users');
 
 const Student = sequelize.define('Student', {
   id: {
@@ -8,10 +8,14 @@ const Student = sequelize.define('Student', {
     autoIncrement: true,
     primaryKey: true
   },
-  asistencia_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
+  user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'id'
+      }
+    },
   institution: {
     type: DataTypes.STRING(255),
     allowNull: false
@@ -20,16 +24,12 @@ const Student = sequelize.define('Student', {
     type: DataTypes.STRING(255),
     allowNull: false
   },
-  grado: {
+  nivel: {
     type: DataTypes.STRING(255),
     allowNull: false
-  },
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
+  }
 }, {
-  tableName: 'students', // nombre de la tabla en PostgreSQL
+  tableName: 'student', // nombre de la tabla en PostgreSQL
   timestamps: false
 });
 

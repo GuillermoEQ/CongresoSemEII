@@ -1,6 +1,4 @@
-//SERA MODIFICADO EL ARCHIVO
-
-const Accommodation = require('../models/Accommodation');
+const Accommodation = require('../models/Accommodations');
 
 // GET ALL ACCOMMODATIONS
 exports.getAllAccommodations = async (req, res) => {

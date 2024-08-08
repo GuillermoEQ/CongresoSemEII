@@ -8,7 +8,7 @@ const activitieRoutes = require('./routes/activitiesRoutes');
 const studentRoutes = require('./routes/studentsRoutes');
 const attendancesRoutes = require('./routes/attendancesRoutes');
 const essaysRoutes = require('./routes/essaysRoutes');
-const registersRoutes = require('./registers/essaysRoutes');
+const registersRoutes = require('./registers/registersRoutes');
 const staffsRoutes = require('./staffs/staffsRoutes');
 
 

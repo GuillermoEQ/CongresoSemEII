@@ -8,8 +8,11 @@ const activitieRoutes = require('./routes/activitiesRoutes');
 const studentRoutes = require('./routes/studentsRoutes');
 const attendancesRoutes = require('./routes/attendancesRoutes');
 const essaysRoutes = require('./routes/essaysRoutes');
-const registersRoutes = require('./registers/registersRoutes');
-const staffsRoutes = require('./staffs/staffsRoutes');
+const lecturerRoutes = require('./routes/lecturersRoutes');
+const medicalRecordsRoutes = require('./routes/medical_recordsRoutes');
+const socialMediasRoutes = require('./routes/social_mediasRoutes');
+const registersRoutes = require('./routes/registersRoutes');
+const staffsRoutes = require('./routes/staffsRoutes');
 
 
 const sequelize = require('./config/db.config');
@@ -41,6 +44,9 @@ app.use(`/api/${version}/activities`, activitieRoutes); // activities routes
 app.use(`/api/${version}/students`, studentRoutes); // activities routes
 app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes
 app.use(`/api/${version}/essays`, essaysRoutes); // essays routes
+app.use(`/api/${version}/lecturers`, lecturerRoutes); // lecturer routes
+app.use(`/api/${version}/medical_records`, medicalRecordsRoutes); // medical records routes
+app.use(`/api/${version}/social_medias`, socialMediasRoutes); // social medias routes
 app.use(`/api/${version}/registers`, registersRoutes); // registers routes
 app.use(`/api/${version}/staffs`, staffsRoutes); // staffs routes
 

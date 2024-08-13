@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const AccommodationType = require('./Accommodations_type');
+const User = require('./Users');
 
 const Accommodation = sequelize.define('Accommodation', {
   id: {
@@ -36,21 +37,34 @@ const Accommodation = sequelize.define('Accommodation', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
+
+  // CLAVES FORANEAS
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+        model: User,
+        key: 'id'
+    }
+},
   type_accommodation_id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     references: {
       model: AccommodationType,
       key: 'id'
-    },
-    allowNull: false
+    }
   }
 }, {
   tableName: 'accommodations', // nombre de la tabla en PostgreSQL
   timestamps: false
 });
 
-// Relaciones
+// Relaciones.
 Accommodation.belongsTo(AccommodationType, { foreignKey: 'type_accommodation_id' });
 AccommodationType.hasMany(Accommodation, { foreignKey: 'type_accommodation_id' });
+
+Accommodation.belongsTo(User, { foreignKey: 'user_id' }); 
+User.hasMany(Accommodation, { foreignKey: 'user_id' });  
 
 module.exports = Accommodation;

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const usersRoutes = require('./routes/usersRoutes');
 const activitiesRoutes = require('./routes/activitiesRoutes');
-const studentRoutes = require('./routes/studentsRoutes');
+const studentsRoutes = require('./routes/studentsRoutes');
 const attendancesRoutes = require('./routes/attendancesRoutes');
 const essaysRoutes = require('./routes/essaysRoutes');
 const lecturersRoutes = require('./routes/lecturersRoutes');
@@ -41,7 +41,7 @@ app.get('/', async (req, res) => {
 // ALL ROUTES
 app.use(`api/${version}/users`, usersRoutes); // user routes
 app.use(`/api/${version}/activities`, activitiesRoutes); // activities routes
-app.use(`/api/${version}/students`, studentRoutes); // activities routes
+app.use(`/api/${version}/students`, studentsRoutes); // activities routes
 app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes
 app.use(`/api/${version}/essays`, essaysRoutes); // essays routes
 app.use(`/api/${version}/lecturers`, lecturersRoutes); // lecturer routes

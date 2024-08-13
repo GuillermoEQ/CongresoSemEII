@@ -8,6 +8,7 @@ const Student = sequelize.define('Student', {
     autoIncrement: true,
     primaryKey: true
   },
+  // CLAVE FORANEA
   user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -32,5 +33,9 @@ const Student = sequelize.define('Student', {
   tableName: 'student', // nombre de la tabla en PostgreSQL
   timestamps: false
 });
+
+// Relaciones.
+Student.belongsTo(User, { foreignKey: 'user_id' }); 
+User.hasMany(Student, { foreignKey: 'user_id' });
 
 module.exports = Student;

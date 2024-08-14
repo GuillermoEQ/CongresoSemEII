@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const medicalRecordsController = require('../controllers/medical_records.controller');
+const medicalRecordsController = require('../controllers/medical_recordsController');
 
 // Crear un nuevo registro médico
 router.post('/', medicalRecordsController.create);

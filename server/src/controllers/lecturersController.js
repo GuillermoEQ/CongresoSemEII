@@ -1,4 +1,4 @@
-const Lecturer = require('../models/lecturers.model');
+const Lecturer = require('../models/Lecturers');
 
 // Crear y guardar un nuevo conferencista
 exports.create = async (req, res) => {

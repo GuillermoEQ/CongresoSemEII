@@ -13,6 +13,9 @@ const medicalRecordsRoutes = require('./routes/medical_recordsRoutes');
 const socialMediasRoutes = require('./routes/social_mediasRoutes');
 const registersRoutes = require('./routes/registersRoutes');
 const staffsRoutes = require('./routes/staffsRoutes');
+const bookingsRoutes = require('./routes/bookingsRoutes');
+const accommodationsRoutes = require('./routes/accommodationsRoutes');
+const accommodationsTypesRoutes = require('./routes/accommodations_typeRoutes');
 
 
 const sequelize = require('./config/db.config');
@@ -51,7 +54,9 @@ app.use(`/api/${version}/medical_records`, medicalRecordsRoutes); // medical rec
 app.use(`/api/${version}/social_medias`, socialMediasRoutes); // social medias routes
 app.use(`/api/${version}/registers`, registersRoutes); // registers routes
 app.use(`/api/${version}/staffs`, staffsRoutes); // staffs routes
-
+app.use(`/api/${version}/bookings`, bookingsRoutes); // bookings routes
+app.use(`/api/${version}/accommodations`, accommodationsRoutes); // accommodatios routes
+app.use(`/api/${version}/accommodations-type`, accommodationsTypesRoutes); // accommodations types routes
 
 
 // SERVER 

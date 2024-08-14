@@ -28,10 +28,10 @@
         });
   
         const user = await User.create({
-          name: 'John',
-          surname: 'Doe',
-          email: 'john.doe@example.com',
-          password: 'securepassword',
+          name: 'Congreso',
+          surname: 'App',
+          email: 'congreso@gmail.com',
+          password: '123456',
           tipo: 'admin'
         });
   

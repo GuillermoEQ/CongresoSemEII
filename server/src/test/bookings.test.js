@@ -1,7 +1,7 @@
 (async () => {
     const { expect } = await import('chai');
     const sequelize = require('../config/db.config');
-    const Booking = require('../models/Booking');
+    const Booking = require('../models/Bookings');
     const Accommodation = require('../models/Accommodations');
     const User = require('../models/Users');
   
@@ -18,17 +18,17 @@
       it('Debería crear una reserva válida', async () => {
         // Crear una acomodación y un usuario como datos necesarios para la reserva
         const accommodation = await Accommodation.create({
-          name: 'Luxury Hotel',
-          address: '123 Example St, City, Country',
+          name: 'Reyunos Hotel',
+          address: 'San Rafael, Mendoza',
           price_per_night: 200,
           available_rooms: 50
         });
   
         const user = await User.create({
-          name: 'John',
-          surname: 'Doe',
-          email: 'john.doe@example.com',
-          password: 'securepassword',
+          name: 'Congreso',
+          surname: 'App',
+          email: 'congreso@gmail.com',
+          password: '123456',
           tipo: 'guest'
         });
   

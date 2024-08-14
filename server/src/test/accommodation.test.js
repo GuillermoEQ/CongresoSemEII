@@ -1,7 +1,7 @@
 (async () => {
     const { expect } = await import('chai');
     const sequelize = require('../config/db.config');
-    const AccommodationType = require('../models/AccommodationType');
+    const AccommodationType = require('../models/Accommodations_type');
   
     describe('AccommodationType Model', () => {
       

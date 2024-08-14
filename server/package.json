@@ -1,13 +1,13 @@
 {
-  "name": "server",
+  "name": "server-semeii",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend para la aplicación del SemEII XV 2024",
   "main": "src/app.js",
   "type": "commonjs",
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "mocha src/test/**/*.test.js"
+    "test": "mocha --timeout 10000 src/test/**/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -18,22 +18,28 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/validator": "^13.11.10",
+    "chai": "^5.1.1",
     "cors": "^2.8.5",
     "eslint": "^9.4.0",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "mocha": "^10.7.3",
     "pg": "^8.12.0",
     "prettier": "^3.3.1",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
-    "chai": "^5.1.1",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
-    "mocha": "^10.4.0",
+    "faker": "^6.6.6",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
     "nodemon": "^3.1.0",
     "reflect-metadata": "^0.2.2",
+    "sequelize-cli": "^6.6.2",
     "sequelize-mock": "^0.10.2",
     "sinon": "^18.0.0",
-    "supertest": "^7.0.0"
+    "ts-jest": "^29.2.4"
   }
 }

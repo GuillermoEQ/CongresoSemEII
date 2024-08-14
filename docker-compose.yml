@@ -9,10 +9,25 @@ services:
       POSTGRES_PASSWORD: ${DB_PASS}
     ports:
       - "5432:5432"
+    volumes:
+      - ./db/data/postgres:/var/lib/postgresql/data 
+
+  db-test:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${DB_TEST_NAME}
+      POSTGRES_USER: ${DB_TEST_USER}
+      POSTGRES_PASSWORD: ${DB_TEST_PASS}
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5430:5432"
+    volumes:
+      - ./db/data-test/postgres:/var/lib/postgresql/data # Persistencia de datos en pruebas
 
   backend:
     build: ./server
     environment:
+      - NODE_ENV=development
       - PORT=${PORT}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
@@ -20,4 +35,16 @@ services:
       - DB_HOST=${DB_HOST}
     ports:
       - "3000:3000"
-    
+
+  backend-test:
+    build: ./server
+    environment:
+      - NODE_ENV=test
+      - PORT=${PORT}
+      - DB_NAME=${DB_TEST_NAME}
+      - DB_USER=${DB_TEST_USER}
+      - DB_PASS=${DB_TEST_PASS}
+      - DB_HOST=db-test
+    ports:
+      - "3001:3000"
+    command: npm test

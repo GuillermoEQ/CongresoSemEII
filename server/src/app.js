@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 });
 
 // ALL ROUTES
-app.use(`api/${version}/users`, usersRoutes); // user routes
+app.use(`/api/${version}/users`, usersRoutes); // user routes
 app.use(`/api/${version}/activities`, activitieRoutes); // activities routes
 app.use(`/api/${version}/students`, studentRoutes); // activities routes
 app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes

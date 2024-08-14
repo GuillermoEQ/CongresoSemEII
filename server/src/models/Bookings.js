@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const Accommodation = require('./Accommodations');
+const User = require('./Users');
 
 const Booking = sequelize.define('Booking', {
   id: {
@@ -8,20 +9,23 @@ const Booking = sequelize.define('Booking', {
     autoIncrement: true,
     primaryKey: true
   },
-  // CLAVES FORANEAS [
+  // CLAVES FORANEAS
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id'
+    }
+  },
   accommodation_id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     references: {
       model: Accommodation,
       key: 'id'
-    },
-    allowNull: false
+    }
   },
-    //Modificar user_id
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  }, // ]
   start_day: {
     type: DataTypes.DATE,
     allowNull: false
@@ -32,14 +36,13 @@ const Booking = sequelize.define('Booking', {
   },
   plazas_reservadas: {
     type: DataTypes.INTEGER,
-    allowNull: false
   }
 }, {
   tableName: 'booking', // nombre de la tabla en PostgreSQL
   timestamps: false
 });
 
-// Relación de la FK: Una reserva pertenece a un alojamiento
+// Relaciones.
 Booking.belongsTo(Accommodation, { foreignKey: 'accommodation_id' });
 Accommodation.hasMany(Booking, { foreignKey: 'accommodation_id' });
 

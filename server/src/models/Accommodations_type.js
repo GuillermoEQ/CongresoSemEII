@@ -13,7 +13,6 @@ const AccommodationType = sequelize.define('AccommodationType', {
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: true
   }
 }, {
   tableName: 'accommodation_type', // nombre de la tabla en PostgreSQL

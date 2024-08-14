@@ -26,7 +26,7 @@ const Attendance = sequelize.define('Attendances', {
     // ]
     }, {
     tableName: 'attendances', // nombre de la tabla de postgreSQL
-    timestamps: True
+    timestamps: true
 });
 
 // La relación como claves foraneas de atendances

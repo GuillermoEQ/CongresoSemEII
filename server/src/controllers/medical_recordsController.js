@@ -1,4 +1,4 @@
-const Medical_Records = require('../models/medical_records.model');
+const Medical_Records = require('../models/Medical_Records');
 
 // Crear y guardar un nuevo registro médico
 exports.create = async (req, res) => {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const lecturersController = require('../controllers/lecturers.controller');
+const lecturersController = require('../controllers/lecturersController');
 
 // Crear un nuevo conferencista
 router.post('/', lecturersController.create);

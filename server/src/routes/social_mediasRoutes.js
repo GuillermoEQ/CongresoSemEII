@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const socialMediasController = require('../controllers/social_medias.controller');
+const socialMediasController = require('../controllers/social_mediasController');
 
 // Crear una nueva red social
 router.post('/', socialMediasController.create);

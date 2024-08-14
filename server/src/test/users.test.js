@@ -15,20 +15,20 @@
   
       it('Debería crear un usuario válido', async () => {
         const userData = {
-          name: 'John',
-          surname: 'Doe',
-          email: 'john.doe@example.com',
-          password: 'securepassword',
+          name: 'Congreso',
+          surname: 'App',
+          email: 'congreso@gmail.com',
+          password: '123456',
           tipo: 'admin'
         };
   
         const user = await User.create(userData);
   
         expect(user.id).to.be.a('string');  // UUID es un string
-        expect(user.name).to.equal('John');
-        expect(user.surname).to.equal('Doe');
-        expect(user.email).to.equal('john.doe@example.com');
-        expect(user.password).to.equal('securepassword');
+        expect(user.name).to.equal('Congreso');
+        expect(user.surname).to.equal('App');
+        expect(user.email).to.equal('congreso@example.com');
+        expect(user.password).to.equal('123456');
         expect(user.tipo).to.equal('admin');
       });
   

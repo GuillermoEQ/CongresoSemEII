@@ -1,4 +1,4 @@
-const Social_Medias = require('../models/social_medias.model');
+const Social_Medias = require('../models/Social_Medias');
 
 // Crear y guardar una nueva red social
 exports.create = async (req, res) => {

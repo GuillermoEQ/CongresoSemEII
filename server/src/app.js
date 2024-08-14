@@ -39,9 +39,11 @@ app.get('/', async (req, res) => {
 });
 
 // ALL ROUTES
-app.use(`api/${version}/users`, usersRoutes); // user routes
-app.use(`/api/${version}/activities`, activitiesRoutes); // activities routes
-app.use(`/api/${version}/students`, studentsRoutes); // activities routes
+
+app.use(`/api/${version}/users`, usersRoutes); // user routes
+app.use(`/api/${version}/activities`, activitieRoutes); // activities routes
+app.use(`/api/${version}/students`, studentRoutes); // activities routes
+
 app.use(`/api/${version}/attendances`, attendancesRoutes); // attendances routes
 app.use(`/api/${version}/essays`, essaysRoutes); // essays routes
 app.use(`/api/${version}/lecturers`, lecturersRoutes); // lecturer routes

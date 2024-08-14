@@ -1,6 +1,7 @@
-const Activitie = require('../models/activities.model');
+const Activitie = require('../models/Activities');
 
 // Crear y guardar una nueva actividad
+
 exports.create = async (req, res) => {
   try {
     const activity = await Activitie.create(req.body);

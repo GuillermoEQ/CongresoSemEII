@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const activitiesController = require('../controllers/activities.controller');
+const activitiesController = require('../controllers/activitiesController');
 
 // Crear una nueva actividad
 router.post('/', activitiesController.create);
